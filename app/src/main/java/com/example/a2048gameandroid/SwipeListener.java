@@ -21,7 +21,7 @@ public class SwipeListener implements GestureDetector.OnGestureListener {
 
     @Override
     public boolean onDown(MotionEvent motionEvent) {
-        return false;
+        return true;
     }
 
     @Override
@@ -60,9 +60,9 @@ public class SwipeListener implements GestureDetector.OnGestureListener {
             }
         }else{
             if(vy>0){
-                callBack.onSwipe(SwipeCallBack.Direction.UP);
-            }else{
                 callBack.onSwipe(SwipeCallBack.Direction.DOWN);
+            }else{
+                callBack.onSwipe(SwipeCallBack.Direction.UP);
             }
         }
         return false;

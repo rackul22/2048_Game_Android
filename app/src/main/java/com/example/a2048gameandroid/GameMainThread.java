@@ -29,8 +29,6 @@ public class GameMainThread extends Thread {
     @Override
     public void run() {
         long startTime,timeInMillis,waitTime;
-        long totalTime = 0;
-        int frameCount = 0;
         long targetTime = 1000/tFramesPerSecond;
 
         while(running){
