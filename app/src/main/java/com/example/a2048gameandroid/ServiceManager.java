@@ -19,6 +19,7 @@ public class ServiceManager extends SurfaceView implements SurfaceHolder.Callbac
 
     private int screenWidth,screenHeight;
     private int stdSize;
+    private TilesManager tilesManager;
 
     public ServiceManager(Context context, AttributeSet attrs){
         super(context,attrs);
@@ -33,6 +34,7 @@ public class ServiceManager extends SurfaceView implements SurfaceHolder.Callbac
         stdSize = (int) (screenWidth *.88)/4;
 
         grid = new GameGrid(getResources(),screenWidth,screenHeight,stdSize);
+        tilesManager = new TilesManager(getResources(),stdSize,screenWidth,screenHeight);
     }
 
     @Override
@@ -64,6 +66,8 @@ public class ServiceManager extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     public void update() {
+        tilesManager.update();
+
 
     }
 
@@ -72,5 +76,6 @@ public class ServiceManager extends SurfaceView implements SurfaceHolder.Callbac
         super.draw(canvas);
         canvas.drawRGB(253,255,245);
         grid.draw(canvas);
+        tilesManager.draw(canvas);
     }
 }
