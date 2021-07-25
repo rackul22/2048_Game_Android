@@ -19,6 +19,7 @@ public class TilesManager implements TileManagerInterface, Board {
     private ArrayList<Integer> drawables = new ArrayList<>();
     // All the possible bitmaps we can have.
     private HashMap<Integer,Bitmap> tilesBitmap = new HashMap<>() ;
+    private Tile[][] tileMatrix = new Tile[4][4];
 
     public TilesManager(Resources resources, int stdSize, int sWidth,int sHeight) {
         this.res = resources;
@@ -27,7 +28,8 @@ public class TilesManager implements TileManagerInterface, Board {
         this.sHeight = sHeight;
         initilizeBitmaps();
 
-       tile = new Tile(stdSize,sWidth,sHeight,this);
+       tile = new Tile(stdSize,sWidth,sHeight,this,1,1);
+       tileMatrix[1][1] = tile;
     }
 
     // Instantiate the bitmaps and retreives them into a list.
@@ -66,7 +68,7 @@ public class TilesManager implements TileManagerInterface, Board {
 
     @Override
     public void update() {
-
+     tile.update();
     }
 
     // Method which gives the bitmap based on the count variable
@@ -74,4 +76,27 @@ public class TilesManager implements TileManagerInterface, Board {
     public Bitmap getBitmap(int count) {
         return tilesBitmap.get(count);
     }
+
+    //
+    public void onSwipe(SwipeCallBack.Direction direction){
+        switch (direction){
+
+            case UP:
+                tile.move(0,1);
+                break;
+
+            case DOWN:
+                tile.move(3,1);
+                break;
+
+            case LEFT:
+                tile.move(1,0);
+                break;
+
+            case RIGHT:
+                tile.move(1,3);
+                break;
+        }
+    }
+
 }
