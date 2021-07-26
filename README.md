@@ -4,3 +4,4 @@ Built the 2048 game on android.
 - Once the Player reached the 2048 mark, a 2048 reached is shown.
 - Also the Game keeps track of the score and highest score .
 - It also has the feature to restart the game by hitting the restart button.
+- Navigate to the Master branch to get access to the code.
